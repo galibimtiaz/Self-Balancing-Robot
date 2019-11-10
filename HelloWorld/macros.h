@@ -38,8 +38,8 @@
 
 #define set_bit(reg,b) (reg|=_bit(b))
 #define clear_bit(reg,b) (reg&=~_bit(b))
-#define set_bits(reg,bit,...) reg = reg | _bit(bit) _BITS(__VA_ARGS__)
-#define clear_bits(reg,bit,...) reg = reg & ~(_bit(bit) _BITS(__VA_ARGS__))
+#define set_bits(reg,bit,...) reg = reg | _bit(bit) | _BITS(__VA_ARGS__)
+#define clear_bits(reg,bit,...) reg = reg & ~(_bit(bit) | _BITS(__VA_ARGS__))
 #define test_bits(var,bits) ((var & (bits)) ? 1 : 0)
 
 #define HBYTE(word) ((word)>>8)

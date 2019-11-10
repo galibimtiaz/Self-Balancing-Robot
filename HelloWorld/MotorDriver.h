@@ -13,15 +13,15 @@
 
 class MotorDriver
 {
-	int PIN1;
-	int PIN2;
+	int pin1;
+	int pin2;
 	unsigned char PORT;
 	int pwm;
 	public:
 	MotorDriver(unsigned char port,int pin1, int pin2);
 	void forward(int pwm);
 	void reverse(int pwm);
-	void stop();
+	void stop(void);
 };
 
 

@@ -11,8 +11,8 @@
 MotorDriver::MotorDriver(unsigned char port,int pin1,int pin2)
 {
 	PORT = port;
-	PIN1 = pin1;
-	PIN2 = pin2;
+	pin1 = pin1;
+	pin2 = pin2;
 	
 	pwm = 0;
 	
@@ -23,19 +23,19 @@ MotorDriver::MotorDriver(unsigned char port,int pin1,int pin2)
 void MotorDriver::forward(int pwm)
 {
 	
-	OCR1A = pwm
-	set_bit(PORT,PIN2);
-	clear_bit(PORT,PIN1);
+	OCR1A = pwm;
+	set_bit(PORT,pin2);
+	clear_bit(PORT,pin1);
 }
 
 void MotorDriver::reverse(int pwm)
 {
-	OCR1A = pwm
-	set_bit(PORT,PIN1);
-	clear_bit(PORT,PIN2);
+	OCR1A = pwm;
+	set_bit(PORT,pin1);
+	clear_bit(PORT,pin2);
 }
 
 void MotorDriver::stop()
 {
-	clear_bits(PORT,PIN1,PIN2);
+	clear_bits(PORT,pin1,pin2);
 }

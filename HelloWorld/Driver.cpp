@@ -8,9 +8,12 @@
 #include "Driver.h"
 #include <avr/io.h>
 
+MotorDriver motorA(PORTB,PORTB1,PORTB2);
+MotorDriver motorB(PORTB,PORTB1,PORTB2);
 
  Driver::Driver(unsigned char motorPort,unsigned char pwmPort)
  {
+	 
 	 set_bits(DDR(pwmPort),PIND4,PIND5);
 	 set_bits(TCCR1A,WGM10,COM1A1,COM1B1);
 	 set_bits(TCCR1B,WGM12,CS12,CS10);
@@ -37,11 +40,11 @@ void Driver::moveA(int pwm)
 	// Checks direction and make the motor A moving
 	if (pwmA > 0)
 	{
-		motor1.forward(pwm);
+		motorA.forward(pwm);
 	}
 	else if (pwmA < 0)
 	{
-		motor1.reverse(pwm);
+		motorA.reverse(pwm);
 	}
 	else
 	{
@@ -71,15 +74,15 @@ void Driver::moveB(int pwm)
 	// Checks direction and make the motor B moving
 	if (pwmA > 0)
 	{
-		motor2.forward(pwm);
+		motorB.forward(pwm);
 	}
 	else if (pwmA < 0)
 	{
-		motor2.reverse(pwm);
+		motorB.reverse(pwm);
 	}
 	else
 	{
-		this->stop_B();
+		stop_B();
 	}
 	
 	OCR1B = pwm;
@@ -89,10 +92,10 @@ void Driver::moveB(int pwm)
 void Driver::stop_A()
 {
 
-	motor1.stop();
+	motorA.stop();
 }
 
 void Driver::stop_B()
 {
-	motor2.stop();
+	motorB.stop();
 }

@@ -9,22 +9,21 @@
 #ifndef DRIVER_H_
 #define DRIVER_H_
 
-#include "MotorDriver.h"
-#include <avr/io.h>
 
+#include <avr/io.h>
+#include "MotorDriver.h"
+#include "led.h"
 
 class Driver
 {
-	MotorDriver motor1(0x05,0,1);
-	MotorDriver motor2(0x05,2,3);
 	unsigned char PORT;
 	int pwmA;
 	int pwmB;
 	
 	public:
-	Driver(unsigned char motorPort,unsigned char pwmPort);
-	void moveA(int pwm);
-	void moveB(int pwm);
+	Driver(unsigned char,unsigned char);
+	void moveA(int);
+	void moveB(int);
 	void stop_A();
 	void stop_B();
 };
