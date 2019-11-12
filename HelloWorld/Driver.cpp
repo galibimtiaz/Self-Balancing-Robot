@@ -6,10 +6,11 @@
 */
 
 #include "Driver.h"
-#include <avr/io.h>
+#include "board.h"
+#include "board.h"
 
-MotorDriver motorA(PORTB,PORTB1,PORTB2);
-MotorDriver motorB(PORTB,PORTB1,PORTB2);
+MotorDriver motorA(MOTOR_PORT,MOTOR1_PIN1,MOTOR1_PIN2);
+MotorDriver motorB(MOTOR_PORT,MOTOR2_PIN1,MOTOR2_PIN1);
 
  Driver::Driver(unsigned char motorPort,unsigned char pwmPort)
  {
